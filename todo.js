@@ -2,11 +2,12 @@ const date = new Date();
 const renderCalendar = () => {
     date.setDate(1);
 const monthDays = document.querySelector('.days');
-const lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate();
+const lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate(); 
+//gives last day of current month by adding one to make it next month and setting the day to 0 which gives the last day of previous month
 const prevLastDay = new Date(date.getFullYear(), date.getMonth(),0).getDate();
 const firstDayIndex = date.getDay();
 const lastDayIndex = new Date(date.getFullYear(),date.getMonth()+1,0).getDay();
-const nextDays = 7 - lastDayIndex -1;
+const nextDays = 7 - lastDayIndex -1; //give number of days to display form the next month lastDayIndex is 0 base so we must subtract 1
 const months = [
     "January",
     "February",
@@ -26,10 +27,15 @@ document.querySelector(".date h1").innerHTML = months[date.getMonth()];
 document.querySelector(".date p").innerHTML = new Date().toDateString();
 
 let days = "";
+/*printing the proper number of days from previous month by counting down from the first day of the month
+and subtracting it from the last day of the previous month, I'll need to add one because days are counted in base 0 */
 for(let x = firstDayIndex; x>0; x--){
     days += `<div class="prev-date">${prevLastDay - x+1}</div>`;
 }
+//date was set to the 1st because it's easier to iterate through the days of the month from the beginning
 for(let i = 1; i<=lastDay; i++){
+    /* to get today's date i needs to be equal to today's date and it must be the current month 
+    otherwise all days with the same number will be highlighted in every other month as well */
     if(i === new Date().getDate() && date.getMonth() === new Date().getMonth()){
         days += `<div class="today">${i}</div>`;
     } else{
