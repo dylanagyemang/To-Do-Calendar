@@ -95,6 +95,7 @@ addToDoButton.addEventListener('click', function(){
     console.log(count)
     count.innerText = new Date().getTime();
     paragraph.value = inputField.value;
+    //still working on adding the timer to tasks
     //toDoContainer.appendChild(count)
     toDoContainer.appendChild(paragraph);
     toDoContainer.appendChild(edit);
