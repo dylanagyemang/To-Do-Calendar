@@ -57,10 +57,11 @@ document.querySelector('.next').addEventListener('click', ()=>{
     date.setMonth(date.getMonth()+ 1)
     renderCalendar();
 });
-
+//adding the feature to select specific days of the month
 document.querySelectorAll('#calendar .days').forEach(d =>{
     d.addEventListener("click", event =>{
         let classes = [...event.target.classList]
+        //had to specify that class must include 'day' otherwise if you click between the days the entire month would be selected
         if (classes.includes('day')) {
             event.target.classList.toggle("selected");
         } else return
@@ -108,16 +109,13 @@ addToDoButton.addEventListener('click', function(){
         toDoContainer.removeChild(edit);
         toDoContainer.removeChild(deleted);  // 
     })
-
-    /* edit is the button that removes the read only
-    attribute, when you double click on the edit button, 
-
-    */
+    /* current issue: having the save button require one click, adding alert function without it repeating
+    currently have to clear the alert function after it's used but if alert is required later it will be cleared */
     edit.addEventListener('click', function(){
         paragraph.removeAttribute('readonly');
         edit.innerText = "Save";
         edit.addEventListener('dblclick', function(){
-            if (!paragraph.value ){  // 
+            if (!paragraph.value ){
                 alert("Please enter task or press delete.");
                  alert=function() {};
                } else {
@@ -128,7 +126,7 @@ addToDoButton.addEventListener('click', function(){
         })
     })
    if (!paragraph.value){
-    alert("Betta add some shit, niggaCan't leave text empty");
+    alert("Can't leave task empty.");
     toDoContainer.removeChild(paragraph);
     toDoContainer.removeChild(edit);
     toDoContainer.removeChild(deleted);
