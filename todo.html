@@ -1,0 +1,45 @@
+<html>
+    <Title>Do Sum'n</Title>
+    <header>
+        <h1 align="center">To-Do App</h1>
+        <h2><span id="time"></span></h2>
+    </header>
+    <body>
+        <div class="contain" align="center">
+            <input id="inputField" type="text" placeholder="Enter text"><button id="addToDo">Add Task</button> 
+            
+        </div>
+        <div class = "container">
+            <div id="calendar" class="calendar">
+                <link rel="stylesheet" href="todostyle.css"/>
+                <div class="month">
+                    <i class="fas fa-angle-left prev"><</i>
+                <div class="date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fas fa-angle-right next">></i>
+                </div>
+                <div class ="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="prev-date">
+                </div>
+                <div id="days" class="days">
+                </div>
+                <div class="next-date">
+                </div>
+            </div>
+        </div>
+        <h3 align="center" class="tasks"><strong>Task List</strong></h3>
+        <ul align="center" class="to-dos" id="toDoContainer">
+        </ul> 
+        <script src="todo.js"></script>
+    </body>
+</html>
