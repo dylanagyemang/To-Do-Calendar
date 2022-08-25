@@ -103,7 +103,9 @@ addToDoButton.addEventListener('click', function(){
     toDoContainer.appendChild(space);
     inputField.value = "";
     paragraph.addEventListener('click', list =>{
-        list.target.classList.toggle("line");
+        if (list.target.hasAttribute('readonly', true)){
+            list.target.classList.toggle("line");
+        } else return
     })
     deleted.addEventListener('click', function(){
         toDoContainer.removeChild(paragraph);

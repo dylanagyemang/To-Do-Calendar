@@ -9,8 +9,13 @@
     </header>
     <body>
         <div class="contain" align="center">
-            <input id="inputField" type="text" placeholder="Enter text"><button id="addToDo">Add Task</button> 
-            
+            <form method='POST'>
+                <div class="input-group input-group-sm mb-3">
+                    <label for="notes">New Note: </label>
+                <input id="inputField" type="text" placeholder="Enter text">
+                <button type="button" class="btn btn-primary" id="addToDo">Add Task</button> 
+                </div>
+            </form>
         </div>
         <div class = "container">
             <div id="calendar" class="calendar">

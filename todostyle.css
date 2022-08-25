@@ -38,7 +38,7 @@ ul input{
 .month{
     width: 100%;
     height: 9rem;
-    background-color: #167e56;
+    background-color: #3f57cc;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,10 +110,10 @@ ul input{
     opacity: 0.5;
 }
 .selected{
-    background-color: #104e36;
+    background-color: #3f57cc;
 }
 .today{
-    background-color: #167e56;
+    background-color: #3f57cc;
 }
 
 #inputField{
@@ -124,7 +124,7 @@ ul input{
 }
 #toDoContainer li:hover{
     cursor: pointer;
-    border: 0.1rem solid #167e56;
+    border: 0.1rem solid #3f57cc;
 }
 .line{
     text-decoration: line-through;
