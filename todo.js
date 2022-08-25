@@ -62,8 +62,17 @@ document.querySelectorAll('#calendar .days').forEach(d =>{
     d.addEventListener("click", event =>{
         let classes = [...event.target.classList]
         //had to specify that class must include 'day' otherwise if you click between the days the entire month would be selected
-        if (classes.includes('day')) {
+        if (classes.includes('day') || classes.includes('prev-date') || classes.includes('next-date')) {
             event.target.classList.toggle("selected");
+            const f = new Date();
+            if ((date.getMonth() === f.getMonth()) && (classes.includes('day')) && (event.target.innerHTML>f.getDate())){
+                const inn = event.target.innerHTML-f.getDate();
+                return inn
+            }
+            if ((date.getMonth() > f.getMonth()) && (classes.includes('day'))){
+                const mind = date.getMonth().getDay();
+                console.log(mind)
+            }
         } else return
     })
 })
@@ -81,7 +90,9 @@ addToDoButton.addEventListener('click', function(){
     paragraph.setAttribute('readonly', true);
     paragraph.setAttribute('id', 'task');
     var edit = document.createElement('button');
+    edit.setAttribute('class', 'btn btn-primary');
     var deleted = document.createElement('button');
+    deleted.setAttribute('class', 'btn btn-primary');
     edit.innerText = "Edit";
     deleted.innerText = "Delete";
     var space = document.createElement('p')
@@ -99,8 +110,26 @@ addToDoButton.addEventListener('click', function(){
         let mm = date.getMinutes();
         let ss = date.getSeconds();
     
+    
+    document.querySelectorAll('#calendar .days').forEach(d =>{
+        d.addEventListener("click", event =>{
+            let classes = [...event.target.classList]
+            //had to specify that class must include 'day' otherwise if you click between the days the entire month would be selected
+            if (classes.includes('day') || classes.includes('prev-date') || classes.includes('next-date')) {
+                const f = new Date();
+                if ((date.getMonth() === f.getMonth()) && (classes.includes('day')) && (event.target.innerHTML>f.getDate())){
+                    const inn = event.target.innerHTML-f.getDate();
+                    count.value = inn+"d "+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+                }
+                if ((date.getMonth() > f.getMonth()) && (classes.includes('day'))){
+                    const mind = date.getMonth() - f.getMonth();
+                    console.log(mind)
+                }
+            } else return
+        })
+    })
     let t = setTimeout(function(){ currentTime() }, 1000);
-    count.value = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    count.value = "d "+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
     }
     currentTime()
     paragraph.value = inputField.value;
@@ -116,6 +145,7 @@ addToDoButton.addEventListener('click', function(){
         } else return
     })
     deleted.addEventListener('click', function(){
+        toDoContainer.removeChild(count)
         toDoContainer.removeChild(paragraph);
         toDoContainer.removeChild(edit);
         toDoContainer.removeChild(deleted);  // 
@@ -138,6 +168,7 @@ addToDoButton.addEventListener('click', function(){
     })
    if (!paragraph.value){
     alert("Can't leave task empty.");
+    toDoContainer.removeChild(count)
     toDoContainer.removeChild(paragraph);
     toDoContainer.removeChild(edit);
     toDoContainer.removeChild(deleted);
