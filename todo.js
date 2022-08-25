@@ -109,27 +109,8 @@ addToDoButton.addEventListener('click', function(){
         let hh = date.getHours();
         let mm = date.getMinutes();
         let ss = date.getSeconds();
-    
-    
-    document.querySelectorAll('#calendar .days').forEach(d =>{
-        d.addEventListener("click", event =>{
-            let classes = [...event.target.classList]
-            //had to specify that class must include 'day' otherwise if you click between the days the entire month would be selected
-            if (classes.includes('day') || classes.includes('prev-date') || classes.includes('next-date')) {
-                const f = new Date();
-                if ((date.getMonth() === f.getMonth()) && (classes.includes('day')) && (event.target.innerHTML>f.getDate())){
-                    const inn = event.target.innerHTML-f.getDate();
-                    count.value = inn+"d "+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
-                }
-                if ((date.getMonth() > f.getMonth()) && (classes.includes('day'))){
-                    const mind = date.getMonth() - f.getMonth();
-                    console.log(mind)
-                }
-            } else return
-        })
-    })
     let t = setTimeout(function(){ currentTime() }, 1000);
-    count.value = "d "+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    count.value = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
     }
     currentTime()
     paragraph.value = inputField.value;
@@ -157,8 +138,11 @@ addToDoButton.addEventListener('click', function(){
         edit.innerText = "Save";
         edit.addEventListener('dblclick', function(){
             if (!paragraph.value ){
-                alert("Please enter task or press delete.");
-                 alert=function() {};
+                toDoContainer.removeChild(count)
+                toDoContainer.removeChild(paragraph);
+                toDoContainer.removeChild(edit);
+                toDoContainer.removeChild(deleted);
+                toDoContainer.removeChild(space);
                } else {
             paragraph.setAttribute('readonly', true);
             edit.innerText = "Edit";
