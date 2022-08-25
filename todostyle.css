@@ -112,6 +112,9 @@ ul input{
 .selected{
     background-color: #3f57cc;
 }
+.count{
+    border: 0rem;
+}
 .today{
     background-color: #3f57cc;
 }

@@ -86,17 +86,25 @@ addToDoButton.addEventListener('click', function(){
     deleted.innerText = "Delete";
     var space = document.createElement('p')
     space.innerText = ' ';
-    var count = document.createElement('div');
+    var count = document.createElement('input');
+    count.setAttribute('readonly', true);
+    count.setAttribute('id','count');
     const selected = document.getElementsByClassName('selected');
     const se = parseInt(selected.innerText)
     const today = document.getElementsByClassName('today');
     const to = parseInt(today.innerText)
-    count.innerText = (se-to);
-    console.log(count)
-    count.innerText = new Date().getTime();
+    function currentTime() {
+        let date = new Date(); 
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        let ss = date.getSeconds();
+    
+    let t = setTimeout(function(){ currentTime() }, 1000);
+    count.value = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    }
+    currentTime()
     paragraph.value = inputField.value;
-    //still working on adding the timer to tasks
-    //toDoContainer.appendChild(count)
+    toDoContainer.appendChild(count)
     toDoContainer.appendChild(paragraph);
     toDoContainer.appendChild(edit);
     toDoContainer.appendChild(deleted);
