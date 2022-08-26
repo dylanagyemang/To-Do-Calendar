@@ -1,4 +1,10 @@
 const date = new Date();
+var dleft = document.createElement('input');
+dleft.setAttribute('readonly', true)
+dleft.setAttribute('class','days-left')
+var mleft = document.createElement('input');
+mleft.setAttribute('readonly', true)
+mleft.setAttribute('class','next-days-left')
 const renderCalendar = () => {
     date.setDate(1);
 const monthDays = document.querySelector('.days');
@@ -67,11 +73,23 @@ document.querySelectorAll('#calendar .days').forEach(d =>{
             const f = new Date();
             if ((date.getMonth() === f.getMonth()) && (classes.includes('day')) && (event.target.innerHTML>f.getDate())){
                 const inn = event.target.innerHTML-f.getDate();
-                return inn
+                dleft.value = inn;
+                console.log(dleft.value);
             }
             if ((date.getMonth() > f.getMonth()) && (classes.includes('day'))){
-                const mind = date.getMonth().getDay();
-                console.log(mind)
+                var mind = date.getMonth()- f.getMonth();
+                let x=0;
+                const inn = event.target.innerHTML-f.getDate();
+                do {
+                    var g = new Date(f.getFullYear(), f.getMonth()+mind,0).getDate()
+                    
+                    mleft.value = inn;
+                    x=x+g;
+                    mind--
+                    
+                }
+                while(mind>0)mleft.value = x+inn;
+                console.log(mleft.value)
             }
         } else return
     })
@@ -82,7 +100,6 @@ renderCalendar();
 let addToDoButton = document.getElementById('addToDo');
 let toDoContainer = document.getElementById('toDoContainer');
 let inputField = document.getElementById('inputField');
-let selected = document.getElementsByClassName('selected')
 
 addToDoButton.addEventListener('click', function(){
     var paragraph = document.createElement('input');
@@ -100,18 +117,26 @@ addToDoButton.addEventListener('click', function(){
     var count = document.createElement('input');
     count.setAttribute('readonly', true);
     count.setAttribute('id','count');
-    const selected = document.getElementsByClassName('selected');
-    const se = parseInt(selected.innerText)
-    const today = document.getElementsByClassName('today');
-    const to = parseInt(today.innerText)
     function currentTime() {
         let date = new Date(); 
         let hh = date.getHours();
         let mm = date.getMinutes();
         let ss = date.getSeconds();
+        const dd = dleft.value;
+        const md = mleft.value;
+        
     let t = setTimeout(function(){ currentTime() }, 1000);
-    count.value = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    const dat = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    const dal = dd+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    const ndal = md+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    if (dal<1){
+        console.log(dat)
     }
+    //console.log(dal)
+    //console.log(ndal)
+    //console.log(count.value)
+    }
+
     currentTime()
     paragraph.value = inputField.value;
     toDoContainer.appendChild(count)
