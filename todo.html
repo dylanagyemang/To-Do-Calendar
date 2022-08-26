@@ -1,18 +1,17 @@
 <html>
-    <Title>Do Sum'n</Title>
+    <Title>Do Something</Title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" 
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" 
     crossorigin="anonymous">
     <header>
         <h1 align="center">To-Do App</h1>
-        <h2><span id="time"></span></h2>
     </header>
     <body>
-        <div class="contain" align="center">
-            <form method='POST'>
-                <div class="input-group input-group-sm mb-3">
+        <div class="contain" >
+            <form class='taskform' method='POST'>
+                <div class="input-group input-group-sm mb-3" id='inpgroup'>
                     <label for="notes">New Note: </label>
-                <input id="inputField" type="text" placeholder="Enter text">
+                <input id="inputField" type="text" placeholder="Type note here">
                 <button type="button" class="btn btn-primary" id="addToDo">Add Task</button> 
                 </div>
             </form>

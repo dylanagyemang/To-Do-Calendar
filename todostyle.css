@@ -6,7 +6,9 @@
 h1{
     margin-top: 20px;
 }
-
+body{
+    align-items: center;
+}
 html{
     font-size: 62.5%;
 }
@@ -19,6 +21,8 @@ ul input{
 }
 .contain{
     margin-top: 20px;
+    display: flex;
+    align-content: center;
 }
 .container{
     width: 100%;
@@ -47,6 +51,7 @@ ul input{
     text-shadow: 0 .3rem .5rem rgba(0,0,0,0.5);
 }
 .tasks{
+    flex: 1 1 0%;
     border: .3rem solid;
     font-size:large;
     font-weight: 400;
@@ -120,7 +125,18 @@ ul input{
 }
 
 #inputField{
-    vertical-align: auto;
+    flex: 1 1 0%;
+    padding: 1rem;
+    /*margin-right: 1rem;
+    border-radius: 1rem;
+    align-items: flex-end;*/
+}
+.outputField{
+    flex: 1 1 0%;
+    padding: 1rem;
+    /*margin-right: 1rem;
+    border-radius: 1rem;
+    align-items: flex-end;*/
 }
 .to-dos{
     font-size: large;
@@ -131,4 +147,15 @@ ul input{
 }
 .line{
     text-decoration: line-through;
+}
+.taskform{
+    display: flex;
+    align-content: center;
+
+}
+input, button{
+    appearance: none;
+    border: none;
+    outline: none;
+    
 }

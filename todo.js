@@ -74,7 +74,6 @@ document.querySelectorAll('#calendar .days').forEach(d =>{
             if ((date.getMonth() === f.getMonth()) && (classes.includes('day')) && (event.target.innerHTML>f.getDate())){
                 const inn = event.target.innerHTML-f.getDate();
                 dleft.value = inn;
-                console.log(dleft.value);
             }
             if ((date.getMonth() > f.getMonth()) && (classes.includes('day'))){
                 var mind = date.getMonth()- f.getMonth();
@@ -104,16 +103,17 @@ let inputField = document.getElementById('inputField');
 addToDoButton.addEventListener('click', function(){
     var paragraph = document.createElement('input');
     paragraph.value = "";
-    paragraph.setAttribute('readonly', true);
+    paragraph.readOnly = true;
     paragraph.setAttribute('id', 'task');
+    paragraph.setAttribute('class', 'outputField');
     var edit = document.createElement('button');
     edit.setAttribute('class', 'btn btn-primary');
     var deleted = document.createElement('button');
     deleted.setAttribute('class', 'btn btn-primary');
     edit.innerText = "Edit";
     deleted.innerText = "Delete";
-    var space = document.createElement('p')
-    space.innerText = ' ';
+    var space = document.createElement('br')
+    //space.innerText = ' ';
     var count = document.createElement('input');
     count.setAttribute('readonly', true);
     count.setAttribute('id','count');
@@ -122,21 +122,23 @@ addToDoButton.addEventListener('click', function(){
         let hh = date.getHours();
         let mm = date.getMinutes();
         let ss = date.getSeconds();
-        const dd = dleft.value;
-        const md = mleft.value;
+        let dd = dleft.value;
+        
+        let md = mleft.value;
+        
         
     let t = setTimeout(function(){ currentTime() }, 1000);
+    const indf = dd+md;
+    if (md>0){
+        dd=0;
+        count.value = md+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    }
     const dat = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
-    const dal = dd+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
-    const ndal = md+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
-    if (dal<1){
-        console.log(dat)
+    const dal = indf+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
+    
+    count.value = dal;
     }
-    //console.log(dal)
-    //console.log(ndal)
-    //console.log(count.value)
-    }
-
+    console.log(count.timestamp)
     currentTime()
     paragraph.value = inputField.value;
     toDoContainer.appendChild(count)
@@ -159,19 +161,20 @@ addToDoButton.addEventListener('click', function(){
     /* current issue: having the save button require one click, adding alert function without it repeating
     currently have to clear the alert function after it's used but if alert is required later it will be cleared */
     edit.addEventListener('click', function(){
-        paragraph.removeAttribute('readonly');
-        edit.innerText = "Save";
-        edit.addEventListener('dblclick', function(){
-            if (!paragraph.value ){
-                toDoContainer.removeChild(count)
-                toDoContainer.removeChild(paragraph);
-                toDoContainer.removeChild(edit);
-                toDoContainer.removeChild(deleted);
-                toDoContainer.removeChild(space);
-               } else {
-            paragraph.setAttribute('readonly', true);
+        if (paragraph.hasAttribute('readonly')){
+        paragraph.readOnly = false;
+        edit.innerText = "Save";}
+    edit.addEventListener('click', function(){
+        if (!paragraph.value){
+            toDoContainer.removeChild(count)
+            toDoContainer.removeChild(paragraph);
+            toDoContainer.removeChild(edit);
+            toDoContainer.removeChild(deleted);
+            toDoContainer.removeChild(space);
+        } 
+            if (!paragraph.hasAttribute('readonly')){
+            paragraph.readOnly = true;
             edit.innerText = "Edit";
-            return 0;
         }
         })
     })
