@@ -156,7 +156,8 @@ addToDoButton.addEventListener('click', function(){
         toDoContainer.removeChild(count)
         toDoContainer.removeChild(paragraph);
         toDoContainer.removeChild(edit);
-        toDoContainer.removeChild(deleted);  // 
+        toDoContainer.removeChild(deleted);
+        toDoContainer.removeChild(space);  
     })
     /* current issue: having the save button require one click, adding alert function without it repeating
     currently have to clear the alert function after it's used but if alert is required later it will be cleared */

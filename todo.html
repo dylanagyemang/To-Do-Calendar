@@ -3,17 +3,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" 
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" 
     crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <header>
-        <h1 align="center">To-Do App</h1>
+        <h1 align="center" class="shadow-lg p-3 mb-5 bg-body rounded">To-Do App</h1>
     </header>
-    <body>
-        <div class="contain" >
-            <form class='taskform' method='POST'>
-                <div class="input-group input-group-sm mb-3" id='inpgroup'>
-                    <label for="notes">New Note: </label>
+    <body align="center">
+        <div class="col-6" >
+            <form class="input-group" method='POST'>
+                <label for="notes">New Note: </label>
                 <input id="inputField" type="text" placeholder="Type note here">
                 <button type="button" class="btn btn-primary" id="addToDo">Add Task</button> 
-                </div>
             </form>
         </div>
         <div class = "container">
