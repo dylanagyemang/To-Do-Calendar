@@ -149,9 +149,9 @@ ul input{
     text-decoration: line-through;
 }
 .taskform{
-    display:flex;
+    /*display:flex;
     align-content: center;
-
+*/
 }
 input, button{
     appearance: none;
@@ -160,5 +160,5 @@ input, button{
     
 }
 .f{
-    display:contents;
+    
 }
