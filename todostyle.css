@@ -176,6 +176,6 @@ input{
 label{
     font-size: large;
 }
-.count{
-    text-align: end;
+#count{
+    align-content: flex-end;
 }
