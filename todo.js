@@ -136,10 +136,19 @@ addToDoButton.addEventListener('click', function(){
     const dat = (24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
     const dal = indf+'d '+(24 - hh)+'h '+(60-mm)+'m '+ (60-ss)+'s';
     
-    count.value = dal;
+    //count.value = dal;
     }
-    console.log(count.timestamp)
-    currentTime()
+    function timestamp(){
+        let date = new Date(); 
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        let ss = date.getSeconds();
+        let dd = dleft.value + mleft.value;
+        let stamp = dd+(24-hh)+(60-mm)+(60-ss);
+        count.value = stamp;
+    }
+    timestamp()
+    setInterval(timestamp,)
     paragraph.value = inputField.value;
     toDoContainer.appendChild(count)
     toDoContainer.appendChild(paragraph);
