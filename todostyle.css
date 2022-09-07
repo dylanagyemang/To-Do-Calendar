@@ -13,6 +13,9 @@ body{
 }
 #todo{
     background-color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size:5rem;
 }
 html{
     font-size: 62.5%;
@@ -163,4 +166,7 @@ input, button{
     border: none;
     outline: none;
     
+}
+input{
+    background-color: bisque;
 }
