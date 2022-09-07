@@ -135,9 +135,10 @@ ul input{
 #inputField{
     flex: 1 1 0%;
     padding: 1rem;
-    /*margin-right: 1rem;
-    border-radius: 1rem;
-    align-items: flex-end;*/
+    height: 4rem;
+    border-color: #3f57cc;
+    border-style: groove;
+    border-radius: 3rem;
 }
 .outputField{
     flex: 1 1 0%;
@@ -169,4 +170,12 @@ input, button{
 }
 input{
     background-color: bisque;
+    height: 3rem;
+    width: 25%;
+}
+label{
+    font-size: large;
+}
+.count{
+    text-align: end;
 }

@@ -107,9 +107,9 @@ addToDoButton.addEventListener('click', function(){
     paragraph.setAttribute('id', 'task');
     paragraph.setAttribute('class', 'outputField');
     var edit = document.createElement('button');
-    edit.setAttribute('class', 'btn btn-primary');
+    edit.setAttribute('class', 'btn btn-primary btn-large');
     var deleted = document.createElement('button');
-    deleted.setAttribute('class', 'btn btn-primary');
+    deleted.setAttribute('class', 'btn btn-dark btn-primary btn-large');
     edit.innerText = "Edit";
     deleted.innerText = "Delete";
     var space = document.createElement('br')
