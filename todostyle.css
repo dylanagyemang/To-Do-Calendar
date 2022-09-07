@@ -138,14 +138,13 @@ ul input{
     height: 4rem;
     border-color: #3f57cc;
     border-style: groove;
-    border-radius: 3rem;
+    border-radius: 2rem;
 }
 .outputField{
     flex: 1 1 0%;
     padding: 1rem;
-    /*margin-right: 1rem;
-    border-radius: 1rem;
-    align-items: flex-end;*/
+    border-radius: 2rem;
+    align-items: flex-end;
 }
 .to-dos{
     font-size: large;
@@ -169,7 +168,7 @@ input, button{
     
 }
 input{
-    background-color: bisque;
+    background-color: rgb(241, 203, 156);
     height: 3rem;
     width: 25%;
 }
@@ -177,5 +176,8 @@ label{
     font-size: large;
 }
 #count{
-    align-content: flex-end;
+    align-content: right;
+    text-align: center;
+    border-radius: 2rem;
+    width: fit-content;
 }
