@@ -2,9 +2,10 @@ const date = new Date();
 var dleft = document.createElement('input');
 dleft.setAttribute('readonly', true)
 dleft.setAttribute('class','days-left')
+dleft.value = 0;
 var mleft = document.createElement('input');
 mleft.setAttribute('readonly', true)
-mleft.setAttribute('class','next-days-left')
+mleft.setAttribute('class','next-days-left');
 const renderCalendar = () => {
     date.setDate(1);
 const monthDays = document.querySelector('.days');
@@ -123,10 +124,7 @@ addToDoButton.addEventListener('click', function(){
         let mm = date.getMinutes();
         let ss = date.getSeconds();
         let dd = dleft.value;
-        
         let md = mleft.value;
-        
-        
     let t = setTimeout(function(){ currentTime() }, 1000);
     const indf = dd+md;
     if (md>0){
@@ -138,17 +136,42 @@ addToDoButton.addEventListener('click', function(){
     
     //count.value = dal;
     }
-    function timestamp(){
-        let date = new Date(); 
+    let date = new Date(); 
         let hh = date.getHours();
         let mm = date.getMinutes();
         let ss = date.getSeconds();
         let dd = dleft.value + mleft.value;
-        let stamp = dd+(24-hh)+(60-mm)+(60-ss);
+    function timestamp(){
+        let sec = 59-ss;
+        let minute = 59-mm;
+        let hours = 23-hh
+        let stamp = dd+'d '+hours+'h '+minute+'m '+sec+'s';
+        if (sec==0){
+            minute--
+            sec--
+            sec = 59;
+
+        } if(minute == 0){
+            hours--
+            sec--
+            minute=59
+        } if(hours==0){
+            dd--;
+            sec--
+            if(dd>0){
+                hours=23;
+            }
+        }
+       /* if (mleft.value>0){
+            count.value = mleft.value+'d '+hours+'h '+minute+'m '+sec+'s';
+        } */else if(sec==0 && minute==0 && hours==0 && dd==0){
+            count.value = "Time up!";
+        }
         count.value = stamp;
     }
     timestamp()
-    setInterval(timestamp,)
+    setInterval(function () { currentTime() },1000);
+    //setInterval(timestamp,1000)
     paragraph.value = inputField.value;
     toDoContainer.appendChild(count)
     toDoContainer.appendChild(paragraph);

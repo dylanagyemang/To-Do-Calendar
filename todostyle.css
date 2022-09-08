@@ -136,7 +136,7 @@ ul input{
     flex: 1 1 0%;
     padding: 1rem;
     height: 4rem;
-    border-color: #3f57cc;
+    border-color: #777;
     border-style: groove;
     border-radius: 2rem;
 }
@@ -179,5 +179,7 @@ label{
     align-content: right;
     text-align: center;
     border-radius: 2rem;
+    border-color: black;
+    border-style:;
     width: fit-content;
 }
