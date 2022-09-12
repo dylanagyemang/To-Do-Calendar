@@ -104,7 +104,7 @@ let inputField = document.getElementById('inputField');
 addToDoButton.addEventListener('click', function(){
     var paragraph = document.createElement('input');
     paragraph.value = "";
-    paragraph.readOnly = true;
+    paragraph.setAttribute('readonly', true);
     paragraph.setAttribute('id', 'task');
     paragraph.setAttribute('class', 'outputField');
     var edit = document.createElement('button');
@@ -146,6 +146,7 @@ addToDoButton.addEventListener('click', function(){
         let minute = 59-mm;
         let hours = 23-hh
         let stamp = dd+'d '+hours+'h '+minute+'m '+sec+'s';
+        
         if (sec==0){
             minute--
             sec--
@@ -168,10 +169,12 @@ addToDoButton.addEventListener('click', function(){
             count.value = "Time up!";
         }
         count.value = stamp;
+        setTimeout(function(){sec()}, 1000);
+        console.log(sec);
     }
+    
     timestamp()
-    setInterval(function () { currentTime() },1000);
-    //setInterval(timestamp,1000)
+    //setInterval(function () { currentTime() },1000);
     paragraph.value = inputField.value;
     toDoContainer.appendChild(count)
     toDoContainer.appendChild(paragraph);
@@ -193,23 +196,23 @@ addToDoButton.addEventListener('click', function(){
     })
     /* current issue: having the save button require one click, adding alert function without it repeating
     currently have to clear the alert function after it's used but if alert is required later it will be cleared */
+    //fixed by using elif instead of if
     edit.addEventListener('click', function(){
-        if (paragraph.hasAttribute('readonly')){
-        paragraph.readOnly = false;
-        edit.innerText = "Save";}
-    edit.addEventListener('click', function(){
-        if (!paragraph.value){
-            toDoContainer.removeChild(count)
-            toDoContainer.removeChild(paragraph);
-            toDoContainer.removeChild(edit);
-            toDoContainer.removeChild(deleted);
-            toDoContainer.removeChild(space);
-        } 
-            if (!paragraph.hasAttribute('readonly')){
-            paragraph.readOnly = true;
-            edit.innerText = "Edit";
+        if (paragraph.getAttribute('readonly') == 'true') {
+            paragraph.removeAttribute('readonly');
+            edit.innerText = "Save";
+            }
+           else if (!paragraph.value){
+             toDoContainer.removeChild(count)
+             toDoContainer.removeChild(paragraph);
+             toDoContainer.removeChild(edit);
+             toDoContainer.removeChild(deleted);
+             toDoContainer.removeChild(space);
+         } 
+            else if (!paragraph.hasAttribute('readonly')){
+                paragraph.setAttribute('readonly','true');
+                edit.innerText = "Edit";
         }
-        })
     })
    if (!paragraph.value){
     alert("Can't leave task empty.");
