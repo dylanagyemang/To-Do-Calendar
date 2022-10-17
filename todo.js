@@ -145,7 +145,12 @@ addToDoButton.addEventListener('click', function(){
         let sec = 59-ss;
         let minute = 59-mm;
         let hours = 23-hh
-        let stamp = dd+'d '+hours+'h '+minute+'m '+sec+'s';
+        if (mleft.value == 0){
+            count.value = dleft.value+'d '+hours+'h '+minute+'m '+sec+'s';
+        }
+        else{
+            count.value = mleft.value+'d '+hours+'h '+minute+'m '+sec+'s';
+        }
         
         if (sec==0){
             minute--
@@ -168,9 +173,8 @@ addToDoButton.addEventListener('click', function(){
         } */else if(sec==0 && minute==0 && hours==0 && dd==0){
             count.value = "Time up!";
         }
-        count.value = stamp;
+        //count.value = stamp;
         setTimeout(function(){sec()}, 1000);
-        console.log(sec);
     }
     
     timestamp()
