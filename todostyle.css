@@ -42,8 +42,8 @@ ul input{
     margin-top: 20px;
 }
 .calendar{
-    width: 45rem;
-    height: 48rem;
+    width: 25vw;
+    height: 50vh;
     background-color: #222227;
     box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, .4);
 }
@@ -82,8 +82,8 @@ ul input{
 }
 
 .weekdays{
-    width: 100%;
-    height: 5rem;
+    width: 25vw;
+    height: 5vh;
     padding: 0 0.4rem;
     display: flex;
     align-items: center;
@@ -92,7 +92,7 @@ ul input{
     font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: 0.1rem;
-    width: calc(44.2rem / 7);
+    width: 3.6vw;
     display: flex;
     justify-content: center;
     align-items: center;
